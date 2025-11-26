@@ -4,12 +4,17 @@
   "description": "trabalho",
   "main": "App.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest" 
   },
   "repository": {
     "type": "git",
     "url": "Backend"
   },
   "author": "Raphinha7",
-  "license": "ISC"
+  "license": "ISC",
+  "keywords": [],
+  "devDependencies": {
+    "jest": "^30.2.0",
+    "supertest": "^7.1.4"
+  }
 }

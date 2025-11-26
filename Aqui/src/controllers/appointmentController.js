@@ -10,23 +10,19 @@ exports.create = async (req, res) => {
 };
 
 exports.getAll = async (_, res) => {
-  const appointments = await Appointment.find();
-  res.json(appointments);
+  const data = await Appointment.find();
+  res.json(data);
 };
 
 exports.getOne = async (req, res) => {
-  const appointment = await Appointment.findById(req.params.id);
-  if (!appointment) return res.status(404).json({ error: "Não encontrado" });
-  res.json(appointment);
+  const item = await Appointment.findById(req.params.id);
+  if (!item) return res.status(404).json({ error: "Não encontrado" });
+  res.json(item);
 };
 
 exports.update = async (req, res) => {
-  const appointment = await Appointment.findByIdAndUpdate(
-    req.params.id,
-    req.body,
-    { new: true }
-  );
-  res.json(appointment);
+  const item = await Appointment.findByIdAndUpdate(req.params.id, req.body, { new: true });
+  res.json(item);
 };
 
 exports.remove = async (req, res) => {

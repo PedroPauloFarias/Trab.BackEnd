@@ -6,10 +6,10 @@ module.exports = (req, res, next) => {
   if (!token) return res.status(401).json({ error: "Token necessário" });
 
   try {
-    const valid = jwt.verify(token.replace("Bearer ", ""), process.env.JWT_SECRET);
-    req.user = valid;
+    const decoded = jwt.verify(token.replace("Bearer ", ""), process.env.JWT_SECRET);
+    req.user = decoded;
     next();
   } catch {
-    return res.status(401).json({ error: "Token inválido" });
+    res.status(401).json({ error: "Token inválido" });
   }
 };
