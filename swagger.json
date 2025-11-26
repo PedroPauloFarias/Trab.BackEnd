@@ -1,0 +1,9 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API - Sistema de Agendamento da Barbearia",
+    "version": "1.0.0",
+    "description": "API para gerenciar Clientes, Serviços e Agendamentos da Barbearia. Documentação gerada com Swagger (OpenAPI 3.0)."
+  }
+}
+
