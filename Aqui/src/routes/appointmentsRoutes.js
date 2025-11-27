@@ -207,3 +207,61 @@ module.exports = {
   router,
   resetAppointments
 };
+
+
+// Teste03- Com o professor
+
+
+
+// const express = require("express");
+// const router = express.Router();
+// const controller = require("../controllers/appointmentController");
+// const auth = require("../middlewares/auth");
+
+// /**
+//  * @openapi
+//  * /appointments:
+//  * get:
+//  * summary: Lista todos os agendamentos
+//  */
+// router.get("/", controller.getAll);
+
+// /**
+//  * @openapi
+//  * /appointments/{id}:
+//  * get:
+//  * summary: Obtém 1 agendamento pelo ID do Mongo
+//  */
+// router.get("/:id", controller.getOne);
+
+// /**
+//  * @openapi
+//  * /appointments:
+//  * post:
+//  * summary: Cria um agendamento (Requer Token)
+//  * security:
+//  * - bearerAuth: []
+//  */
+// router.post("/", auth, controller.create);
+
+// /**
+//  * @openapi
+//  * /appointments/{id}:
+//  * put:
+//  * summary: Atualiza um agendamento (Requer Token)
+//  * security:
+//  * - bearerAuth: []
+//  */
+// router.put("/:id", auth, controller.update);
+
+// /**
+//  * @openapi
+//  * /appointments/{id}:
+//  * delete:
+//  * summary: Remove um agendamento (Requer Token)
+//  * security:
+//  * - bearerAuth: []
+//  */
+// router.delete("/:id", auth, controller.remove);
+
+// module.exports = { router };

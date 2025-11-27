@@ -150,3 +150,109 @@ describe('Sistema de Agendamento de Cabeleireiro - Rotas de Agendamentos', () =>
     });
   });
 });
+
+// Teste03 - Com o professsor
+
+// const request = require('supertest');
+// const app = require('../src/app');
+// const mongoose = require('mongoose');
+// const User = require('../src/models/User');
+// const Appointment = require('../src/models/Appointment');
+
+// describe('Integração: Agendamentos (com MongoDB e Auth)', () => {
+//   let token;
+//   let createdId;
+
+//   // Antes de todos os testes: Conecta e cria Usuário para pegar Token
+//   beforeAll(async () => {
+//     // Usa o MONGO_URI do .env ou um banco de memória se preferir
+//     await mongoose.connect(process.env.MONGO_URI);
+    
+//     // Limpa o banco para começar zerado
+//     await User.deleteMany({});
+//     await Appointment.deleteMany({});
+
+//     // Cria usuário de teste
+//     await request(app).post('/auth/register').send({
+//       email: "teste@teste.com",
+//       password: "123" // O model User.js já faz o hash
+//     });
+
+//     // Faz login para pegar o token
+//     const res = await request(app).post('/auth/login').send({
+//       email: "teste@teste.com",
+//       password: "123"
+//     });
+    
+//     token = res.body.token;
+//   });
+
+//   // Fecha conexão ao final
+//   afterAll(async () => {
+//     await mongoose.connection.close();
+//   });
+
+//   describe('POST /appointments', () => {
+//     it('Deve falhar sem token (401)', async () => {
+//       await request(app).post('/appointments').send({
+//         client: 'Sem Auth', service: 'Corte', date: 'Hoje'
+//       }).expect(401);
+//     });
+
+//     it('Deve criar agendamento com sucesso (201)', async () => {
+//       const res = await request(app)
+//         .post('/appointments')
+//         .set('Authorization', `Bearer ${token}`) // Envia o Token
+//         .send({
+//           client: 'João Silva',
+//           service: 'Corte Masculino',
+//           date: '2023-12-25'
+//         });
+
+//       expect(res.status).toBe(201);
+//       expect(res.body).toHaveProperty('_id'); // Mongo usa _id
+//       createdId = res.body._id; // Salva ID para os próximos testes
+//     });
+//   });
+
+//   describe('GET /appointments', () => {
+//     it('Deve listar os agendamentos', async () => {
+//       const res = await request(app).get('/appointments');
+//       expect(res.status).toBe(200);
+//       expect(res.body.length).toBeGreaterThan(0);
+//       expect(res.body[0].client).toBe('João Silva');
+//     });
+//   });
+
+//   describe('PUT /appointments/:id', () => {
+//     it('Deve atualizar o agendamento', async () => {
+//       const res = await request(app)
+//         .put(`/appointments/${createdId}`)
+//         .set('Authorization', `Bearer ${token}`)
+//         .send({
+//           client: 'João Silva Editado',
+//           service: 'Barba',
+//           date: '2023-12-26'
+//         });
+
+//       expect(res.status).toBe(200); // Controller retorna o objeto atualizado ou status 200
+//       expect(res.body.client).toBe('João Silva Editado');
+//     });
+//   });
+
+//   describe('DELETE /appointments/:id', () => {
+//     it('Deve remover o agendamento', async () => {
+//       await request(app)
+//         .delete(`/appointments/${createdId}`)
+//         .set('Authorization', `Bearer ${token}`)
+//         .expect(204);
+
+//       // Confirma que sumiu
+//       const check = await Appointment.findById(createdId);
+//       expect(check).toBeNull();
+//     });
+//   });
+// });
+
+//  "test": "jest",
+//     "start": "node index.js"
