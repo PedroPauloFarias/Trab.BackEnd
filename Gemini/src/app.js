@@ -10,8 +10,7 @@ const servicesRoutes = require("./routes/servicesRoutes");
 // Swagger
 const { swaggerUi, swaggerSpec } = require("./swagger");
 
-const app = express(); // <--- O erro acontece se isso aqui não for exportado corretamente
-
+const app = express(); 
 app.use(cors());
 app.use(express.json());
 
@@ -30,4 +29,4 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 // Tratamento de Erros
 app.use(require("./middlewares/errorHandler"));
 
-module.exports = app; // <--- Isso é crucial para o server.js e o jest funcionarem
+module.exports = app; 

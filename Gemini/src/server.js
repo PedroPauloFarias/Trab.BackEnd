@@ -10,8 +10,8 @@ const mongoUri = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGOD
 mongoose
   .connect(mongoUri)
   .then(() => {
-    console.log("✅ MongoDB Conectado com Sucesso!");
-    console.log(`🔗 Banco: ${process.env.MONGODB_DATABASE}`);
+    console.log("MongoDB Conectado com Sucesso!");
+    console.log(`Banco: ${process.env.MONGODB_DATABASE}`);
     
     const port = process.env.PORT || 3000;
     app.listen(port, () => {
@@ -20,5 +20,5 @@ mongoose
     });
   })
   .catch((err) => {
-    console.error("❌ Erro ao conectar no MongoDB:", err);
+    console.error(" Erro ao conectar no MongoDB:", err);
   });
