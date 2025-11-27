@@ -13,21 +13,36 @@ git clone <URL_DO_REPOSITORIO>
 
 
 src/
+├─ config
+│  └─ .env
 ├─ controllers/
-│  └─ appointmentController.js
+│  ├─ appointmentController.js
+│  ├─authController.js
+│  ├─clientController.js
+│  ├─serviceController.js
+│  └─userController.js
 ├─ middlewares/
 │  ├─ auth.js
 │  ├─ errorHandler.js
 │  └─ logger.js
+├─ models/
+│   ├─ Appointment.js
+│   ├─  Client.js
+│   ├─ Service.js
+│   └─ User.js
 ├─ routes/
 │  ├─ appointmentsRoutes.js
 │  ├─ clientsRoutes.js
 │  ├─ servicesRoutes.js
 │  └─ authRoutes.js
 ├─ app.js
+├─ serve.js
+├─ swagger.js
 tests/
 ├─ appointments.test.js
+package-lock.json
 package.json
+
 
 
 # 💈 Sistema de Gerenciamento de Agendamentos (Trab. BackEnd)

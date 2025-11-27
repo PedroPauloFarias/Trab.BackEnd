@@ -1,25 +1,27 @@
-const express = require("express");
-const cors = require("cors");
-const { router: appointmentRoutes } = require("./routes/appointmentsRoutes");
+// Esse é o anterior
 
-const app = express(); // CRIANDO O APP PRIMEIRO
+// const express = require("express");
+// const cors = require("cors");
+// const { router: appointmentRoutes } = require("./routes/appointmentsRoutes");
 
-app.use(cors());
-app.use(express.json());
+// const app = express(); // CRIANDO O APP PRIMEIRO
 
-// Logger
-app.use(require("./middlewares/logger"));
+// app.use(cors());
+// app.use(express.json());
 
-// Rotas
-app.use("/appointments", appointmentRoutes);
+// // Logger
+// app.use(require("./middlewares/logger"));
 
-// Swagger, se tiver
-// app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+// // Rotas
+// app.use("/appointments", appointmentRoutes);
 
-// Error Handler
-app.use(require("./middlewares/errorHandler"));
+// // Swagger, se tiver
+// // app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-module.exports = app;
+// // Error Handler
+// app.use(require("./middlewares/errorHandler"));
+
+// module.exports = app;
 
 
 // Teste03 Com o professor
@@ -57,3 +59,75 @@ module.exports = app;
 // app.use(require("./middlewares/errorHandler"));
 
 // module.exports = app;
+
+
+// Teste04
+
+// const express = require("express");
+// const cors = require("cors");
+// // Imports das Rotas
+// const { router: appointmentRoutes } = require("./routes/appointmentsRoutes");
+// const authRoutes = require("./routes/authRoutes");
+// const clientsRoutes = require("./routes/clientsRoutes");
+// const servicesRoutes = require("./routes/servicesRoutes");
+
+// const app = express();
+
+// app.use(cors());
+// app.use(express.json());
+
+// // Logger (Opcional)
+// // app.use(require("./middlewares/logger"));
+
+// // Rotas
+// app.use("/auth", authRoutes);            // Importante para o teste de Login
+// app.use("/appointments", appointmentRoutes);
+// app.use("/clients", clientsRoutes);
+// app.use("/services", servicesRoutes);
+
+// // Swagger (se tiver configurado)
+// // const { swaggerUi, swaggerSpec } = require("./swagger");
+// // app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+// module.exports = app;
+
+
+// Teste04.2
+
+const express = require("express");
+const cors = require("cors");
+// Imports das Rotas
+const { router: appointmentRoutes } = require("./routes/appointmentsRoutes");
+const authRoutes = require("./routes/authRoutes"); // <--- TEM QUE TER ISSO
+const clientsRoutes = require("./routes/clientsRoutes");
+const servicesRoutes = require("./routes/servicesRoutes");
+
+// Swagger
+const { swaggerUi, swaggerSpec } = require("./swagger");
+
+const app = express();
+
+
+const authRoutes = require("./routes/authRoutes");// Teste04.2.3
+
+app.use("/auth", authRoutes);// Teste04.2.3
+
+app.use(cors());
+app.use(express.json());
+
+// Logger
+app.use(require("./middlewares/logger"));
+
+// Documentação
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+// --- AS ROTAS PRECISAM ESTAR AQUI ---
+app.use("/auth", authRoutes); // <--- TEM QUE TER ISSO
+app.use("/appointments", appointmentRoutes);
+app.use("/services", servicesRoutes);
+app.use("/clients", clientsRoutes);
+
+// Error Handler
+app.use(require("./middlewares/errorHandler"));
+
+module.exports = app;
