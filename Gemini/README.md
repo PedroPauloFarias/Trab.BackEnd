@@ -1,47 +1,6 @@
-
-
-src/
-├─ config
-│  └─ .env
-├─ controllers/
-│  ├─ appointmentController.js
-│  ├─authController.js
-│  ├─clientController.js
-│  ├─serviceController.js
-│  └─userController.js
-├─ middlewares/
-│  ├─ auth.js
-│  ├─ errorHandler.js
-│  └─ logger.js
-├─ models/
-│   ├─ Appointment.js
-│   ├─  Client.js
-│   ├─ Service.js
-│   └─ User.js
-├─ routes/
-│  ├─ appointmentsRoutes.js
-│  ├─ clientsRoutes.js
-│  ├─ servicesRoutes.js
-│  └─ authRoutes.js
-├─ app.js
-├─ serve.js
-├─ swagger.js
-tests/
-├─ appointments.test.js
-package-lock.json
-package.json
-
-
-
-
-
-
-------------------------------------------------------------------------------------------------------------------------
-
-
 Este projeto consiste em uma API RESTful desenvolvida em Node.js com Express para o gerenciamento de agendamentos, clientes e serviços de uma barbearia. O sistema implementa um CRUD completo, autenticação via JWT (JSON Web Token) e documentação automática via Swagger. Este README documenta a configuração, execução, testes e correções aplicadas durante o desenvolvimento para resolver erros comuns como "next is not a function", problemas de autenticação e falhas nos testes.
 
-## 📋 Funcionalidades
+##  Funcionalidades
 
 - **Autenticação:** Registro e Login de usuários (Administradores/Funcionários) com geração de Token JWT.
 - **Gerenciamento de Agendamentos:** Criar, Listar, Atualizar e Remover agendamentos (Protegido por autenticação).
@@ -49,7 +8,7 @@ Este projeto consiste em uma API RESTful desenvolvida em Node.js com Express par
 - **Documentação:** Interface interativa Swagger para testar rotas.
 - **Testes Automatizados:** Cobertura com Jest para autenticação e rotas principais.
 
-## 🛠️ Tecnologias e Dependências
+##  Tecnologias e Dependências
 
 O projeto foi construído utilizando as seguintes tecnologias:
 
@@ -62,7 +21,7 @@ O projeto foi construído utilizando as seguintes tecnologias:
 * **Dotenv** (Gerenciamento de variáveis de ambiente)
 * **Cors** (Habilitação de acesso cruzado)
 
-## ⚙️ Configuração e Instalação
+##  Configuração e Instalação
 
 ### Pré-requisitos
 * Node.js instalado (versão 14+ recomendada)
@@ -93,21 +52,24 @@ O projeto foi construído utilizando as seguintes tecnologias:
    PORT=3000
    ```
 
-## 🚀 Execução
+##  Execução
 
 Para iniciar o servidor em modo de produção/desenvolvimento:
 
 ```bash
 node src/server.js
 ```
+```bash
+npx jest
+```
 
 Se tudo estiver correto, você verá no terminal:
 
-> ✅ MongoDB Conectado com Sucesso!
-> 🚀 Servidor rodando em http://localhost:3000
-> 📖 Swagger disponível em http://localhost:3000/api-docs
+>  MongoDB Conectado com Sucesso!
+>  Servidor rodando em http://localhost:3000
+> 📖Swagger disponível em http://localhost:3000/api-docs
 
-## 🧪 Como Rodar os Testes
+##  Como Rodar os Testes
 
 O projeto possui testes automatizados cobrindo autenticação e rotas de agendamento. Para executá-los:
 
@@ -123,7 +85,7 @@ Durante o desenvolvimento, foram corrigidos:
 - **Falhas de Autenticação**: Adicionado hook de hash de senha no modelo `User.js` e carregamento do `.env` nos testes.
 - **Token Inválido**: Verificado middleware `auth.js` para rejeitar tokens vazios/expirados.
 
-## 📖 Documentação e Exemplos de Uso
+##  Documentação e Exemplos de Uso
 
 A documentação completa dos endpoints, parâmetros e exemplos de Request/Response está disponível via **Swagger**.
 
@@ -134,16 +96,16 @@ Com o servidor rodando, acesse em seu navegador:
 
 | Método | Rota               | Descrição                              | Autenticação |
 | :---   | :---               | :---                                   | :---:        |
-| POST   | `/auth/register`   | Cria um novo usuário (Admin)           | ❌           |
-| POST   | `/auth/login`      | Autentica e retorna o Token JWT        | ❌           |
-| GET    | `/appointments`    | Lista todos os agendamentos            | ❌           |
-| POST   | `/appointments`    | Cria um novo agendamento               | ✅ (JWT)     |
-| PUT    | `/appointments/:id`| Atualiza um agendamento                | ✅ (JWT)     |
-| DELETE | `/appointments/:id`| Remove um agendamento                  | ✅ (JWT)     |
-| GET    | `/clients`         | Lista clientes                         | ❌           |
-| POST   | `/clients`         | Cria cliente                           | ✅ (JWT)     |
-| GET    | `/services`        | Lista serviços                         | ❌           |
-| POST   | `/services`        | Cria serviço                           | ✅ (JWT)     |
+| POST   | `/auth/register`   | Cria um novo usuário (Admin)           |     X        |
+| POST   | `/auth/login`      | Autentica e retorna o Token JWT        |     X        |
+| GET    | `/appointments`    | Lista todos os agendamentos            |     X        |
+| POST   | `/appointments`    | Cria um novo agendamento               | OK (JWT)     |
+| PUT    | `/appointments/:id`| Atualiza um agendamento                | OK (JWT)     |
+| DELETE | `/appointments/:id`| Remove um agendamento                  | OK (JWT)     |
+| GET    | `/clients`         | Lista clientes                         |     X        |
+| POST   | `/clients`         | Cria cliente                           | OK (JWT)     |
+| GET    | `/services`        | Lista serviços                         |     X        |
+| POST   | `/services`        | Cria serviço                           | OK (JWT)     |
 
 ### Exemplo de Request (Criar Agendamento):
 ```bash
@@ -158,14 +120,6 @@ Content-Type: application/json
 }
 ```
 
-## 👥 Integrantes do Grupo e Divisão de Tarefas
-
-| Nome Completo | RA / Matrícula | Divisão de Tarefas |
-| :--- | :--- | :--- |
-| **Integrante 1** | 000000 | Configuração do Servidor, Conexão MongoDB e Swagger |
-| **Integrante 2** | 000000 | Desenvolvimento dos Controllers e Models (User/Auth) |
-| **Integrante 3** | 000000 | Desenvolvimento das Rotas de Agendamento e CRUD |
-| **Integrante 4** | 000000 | Implementação dos Testes (Jest) e Correções de Erros |
 
 ## 📝 Notas Adicionais
 
@@ -174,4 +128,4 @@ Content-Type: application/json
 - **Erros Comuns Corrigidos:** Durante a implementação, foram resolvidos problemas de YAML no Swagger, hash de senhas, middlewares de erro e carregamento de `.env` nos testes.
 - **Contribuição:** Para contribuir, crie uma branch e faça pull requests.
 
-Para dúvidas, entre em contato com os integrantes do grupo. 🚀
+Para dúvidas, entre em contato com os integrantes do grupo. 
