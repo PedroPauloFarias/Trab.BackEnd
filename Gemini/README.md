@@ -1,44 +1,5 @@
 
 
-src/
-├─ config
-│  └─ .env
-├─ controllers/
-│  ├─ appointmentController.js
-│  ├─authController.js
-│  ├─clientController.js
-│  ├─serviceController.js
-│  └─userController.js
-├─ middlewares/
-│  ├─ auth.js
-│  ├─ errorHandler.js
-│  └─ logger.js
-├─ models/
-│   ├─ Appointment.js
-│   ├─  Client.js
-│   ├─ Service.js
-│   └─ User.js
-├─ routes/
-│  ├─ appointmentsRoutes.js
-│  ├─ clientsRoutes.js
-│  ├─ servicesRoutes.js
-│  └─ authRoutes.js
-├─ app.js
-├─ serve.js
-├─ swagger.js
-tests/
-├─ appointments.test.js
-package-lock.json
-package.json
-
-
-
-
-
-
-------------------------------------------------------------------------------------------------------------------------
-
-
 Este projeto consiste em uma API RESTful desenvolvida em Node.js com Express para o gerenciamento de agendamentos, clientes e serviços de uma barbearia. O sistema implementa um CRUD completo, autenticação via JWT (JSON Web Token) e documentação automática via Swagger. Este README documenta a configuração, execução, testes e correções aplicadas durante o desenvolvimento para resolver erros comuns como "next is not a function", problemas de autenticação e falhas nos testes.
 
 ## 📋 Funcionalidades
